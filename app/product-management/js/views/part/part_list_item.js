@@ -191,14 +191,18 @@ define([
             var parentInstance = this;
             var workspace = this.model.attributes.workspaceId;
             var listChild = this.$('.list_child');
-            $(this.el).find('td').each(function (index, element) {
-
-                $(element).css('vertical-align', 'top');
-            });
+            this.modificateStyle(this.el);
             this.makeRootNodeCollapsable();
             this.getChild(workspace, partKey).success(function (data) {
 
                 parentInstance.buildChildsNodes(data, listChild);
+            });
+        },
+        modificateStyle : function(el){
+
+            $(el).find('td').each(function (index, element) {
+
+                $(element).css('vertical-align', 'top');
             });
         },
         expandEmbeddedNodesChilds: function (event) {
@@ -257,7 +261,7 @@ define([
                                 rootContext.buildChildsNodes(data, includeUl);
                                 if ($(item).is(':last-child')) {
 
-                                    includeDiv.setAttribute('class', 'blockClickAreaEmbedded hitarea last expandable-hitarea embeddedExpandable');
+                                    includeDiv.setAttribute('class', 'blockClickAreaEmbedded hitarea expandable-hitarea embeddedExpandable');
                                 }
                                 includeUl.setAttribute('style', 'display:none;');
                                 item.append(includeUl);
@@ -442,8 +446,8 @@ define([
                     $(element).addClass('last');
                 }
                 $(element).addClass('expandable-hitarea');
+                $(element).addClass('lastExpandable-hitarea');
                 $(element).addClass('expandable');
-                $(element).addClass('blockClickArea');
             });
         },
         revertRootFirstPath: function () {
@@ -456,7 +460,7 @@ define([
                 $(element).addClass('expandable');
                 if ($(element).is(':last-child')) {
 
-                    $(element).addClass('last');
+                    $(element).addClass('lastExpandable');
                 }
             });
         },

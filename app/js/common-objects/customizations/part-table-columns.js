@@ -85,11 +85,11 @@ define(['common-objects/utils/date'], function (date) {
 
             var label = '<span  class="product_title expandable">' + model.getPartKey() + '</span>';
 
-            var text = '<div><i class="fa ' + statusIcon + '"></i><i class="fa ' + assemblyIcon + '"></i><span class="part_number_value">' + model.getNumber() + '</span></div>';
-
             var list = '<ul><li class="path_-1 expandable lastExpandable"><div  class="blockClickArea hitarea expandable-hitarea lastExpandable-hitarea expandable"></div>' + label + '<ul class="list_child"></ul></li></ul>';
 
-            var navBalise = '<nav id="product_nav_list" class="treeview">' + text + list + '</nav>';
+            var text = '<div><i style="vertical-align:top;" class="fa ' + statusIcon + '"></i><i style="vertical-align:top;" class="fa ' + assemblyIcon + '"></i><ul style="display: inline-block;style="vertical-align:top;"><li class="path_-1 expandable lastExpandable"><div  class="blockClickArea hitarea expandable-hitarea lastExpandable-hitarea expandable"></div><span class="part_number_value">' + model.getNumber() + '</span><ul class="list_child"></ul></li></ul></div>';
+
+            var navBalise = '<nav id="product_nav_list" class="treeview">' + text + '</nav>';
 
             var assemblyPartBuild = '<td class="part_number">' + navBalise + '</td>';
 
